@@ -17,13 +17,35 @@ class CheckBox extends Component {
     };
   }
 
-
+  // Function to display Checkboxes
+  renderList = () => {
+    return this.state.list.map((item) => (
+      <div>
+        <input
+          key={item.id}
+          type="checkbox"
+          name={item.name}
+          value={item.name}
+          checked={item.isChecked}
+          onChange={this.handleChange}
+        />
+        <label>{item.name}</label>
+      </div>
+    ));
+  };
+  // Rendering Checkboxes
   render() {
     return (
       <div>
-        <input />
+        <input
+          type="checkbox"
+          name="checkAll"
+          checked={this.state.allChecked}
+          onChange={this.handleChange}
+        />
         Select All
         <br />
+        {this.renderList()}
       </div>
     );
   }
