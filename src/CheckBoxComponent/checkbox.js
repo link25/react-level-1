@@ -17,54 +17,13 @@ class CheckBox extends Component {
     };
   }
 
-  // Handling chekboxes event on Selecting/Unselecting
-  handleChange = (e) => {
-    let itemName = e.target.name;
-    let checked = e.target.checked;
-    this.setState((prevState) => {
-      let { list, allChecked } = prevState;
-      if (itemName === "checkAll") {
-        allChecked = checked;
-        list = list.map((item) => ({ ...item, isChecked: checked }));
-      } else {
-        list = list.map((item) =>
-          item.name === itemName ? { ...item, isChecked: checked } : item
-        );
-        allChecked = list.every((item) => item.isChecked);
-      }
-      return { list, allChecked };
-    });
-  };
-  
-  // Function to display Checkboxes
-  renderList = () => {
-    return this.state.list.map((item) => (
-      <div>
-        <input
-          key={item.id}
-          type="checkbox"
-          name={item.name}
-          value={item.name}
-          checked={item.isChecked}
-          onChange={this.handleChange}
-        />
-        <label>{item.name}</label>
-      </div>
-    ));
-  };
-  // Rendering Checkboxes
+
   render() {
     return (
       <div>
-        <input
-          type="checkbox"
-          name="checkAll"
-          checked={this.state.allChecked}
-          onChange={this.handleChange}
-        />
+        <input />
         Select All
         <br />
-        {this.renderList()}
       </div>
     );
   }
